@@ -91,6 +91,10 @@
                 <!-- title page -->
                 <section>
                     <h1>Introduction to Bio-Formats</h1>
+
+                    <aside class="notes">
+                      To start off this workshop session, I'd like to give a brief overview of the past, present, and future of Bio-Formats.
+                    </aside>
                 </section>
 
                 <section>
@@ -107,6 +111,25 @@
                           <li>also now in C++</li>
                         </ul>
                     </ul>
+
+                    <aside class="notes">
+                      We talk about Bio-Formats a lot, but what exactly is it?
+                      Primarily, it's a Java library that reads files in many different imaging formats.
+                      Not only does it provide unified access to the image data from over 140 different formats,
+                      but critically it also provides the acquisition information that is associated with the images.
+                      I'll show an example shortly, but the goal in effect is to have a single API that can give
+                      you an image, the time at which is was acquired, which objective was used, the wavelength
+                      of the laser used, and any other acquisition information - independent of the file format
+                      and in any application that supports Java.
+
+                      To facilitate this, Bio-Formats implements the OME-XML schema, and thus provides a complete
+                      reference implementation of the two formats that we develop ourselves - OME-XML and OME-TIFF.
+
+                      With the recent 5.1.2 release, we also now have complete OME-XML and OME-TIFF support natively
+                      in a Bio-Formats C++ library.  I won't go into much detail here as that is the topic of the next talk,
+                      but we're pretty exicted about this as it means that roughly the same API can be used
+                      for both formats in both Java and C++ applications.
+                    </aside>
                 </section>
 
                 <section>
@@ -122,7 +145,53 @@
                       <li>late 2012/early 2013 - work began on C++ library</li>
                       <li>2014/2015 - major effort to improve performance</li>
                       <li>2015 - increasing number of contributed code changes</li>
+                      <li>2015+ - more frequent releases</li>
                     </ul>
+
+                    <aside class="notes">
+                      So to give a little history, development on the Java library began in mid-2005, so
+                      it is currently in its 10th year of active development.
+                      The first public release was March 31 2006; the primary usage in the early days was as a plugin
+                      for ImageJ.  Around the same time, the first versions of OMERO were being released, and so in
+                      late 2006 OMERO began using Bio-Formats to import files.
+                      In early 2008, we added official support for MATLAB through a set of example scripts, which evolved
+                      into the current MATLAB framework that is widely used today.
+
+                      Also in 2008, both Bio-Formats and OMERO had been in the field for a couple of years,
+                      and were starting to experience some growing pains.  Up until this point, both projects
+                      were developed largely independently, without a complete awareness of how
+                      implementation choices in Bio-Formats might affect OMERO or vice versa.  This was most
+                      challenging in terms of how acquisition metadata was handled by Bio-Formats -
+                      it was a this point that we made a major effort to fully implement the OME-XML schema
+                      and to use that as the primary means of describing the metadata contained in a file.
+                      Prior to this, metadata was primarily stored in what we call the "original metadata table",
+                      which is a free-form and format-dependent hashtable.
+                      This effort helped to stabilize file import in OMERO, and greatly improved the
+                      interaction between the two projects.  So in 2009, with version 4.0.0,
+                      we decided to unify the planning and release processes for Bio-Formats and OMERO, to
+                      more easily prevent changes in one project from negatively impacting the other.
+                      This is the same strategy we use today of releasing Bio-Formats and OMERO
+                      on the same day and with the same version number.
+
+                      Development then progressed for a while without major incident - we fixed bugs,
+                      and added more formats - but based on feedback on the mailing lists and in these meetings,
+                      we realized that a Java library alone wouldn't be sufficient.
+                      So in late 2012/early 2013 we began work on a C++ version of the Bio-Formats API.
+                      The initial goal, which is now largely realized, was to provide reading and writing support
+                      for our two formats - OME-XML and OME-TIFF.
+                      In parallel, we've spent much of the last 1.5-2 years improving the read time
+                      for many formats - this has been driven by the rise of high throughput imaging modalities
+                      where each fileset might be on the order of several terabytes.
+
+                      In recent months, we've noted a distinct increase in the level of engagement with developers
+                      who are using Bio-Formats.  In particular, we've had an increasing number of
+                      code contributions via GitHub pull requests - on average about one every 2 weeks.
+
+                      Finally, we know that many of our users would like to see more frequent releases, so
+                      that bug fixes are available within days, not weeks or months.  So far in the 5.1 line,
+                      we've been announcing one new release per month; we're planning ways to make this even faster,
+                      though this may mean that Bio-Formats and OMERO are no longer released at the same time.
+                    </aside>
                 </section>
 
                 <section>
@@ -131,13 +200,28 @@
 
                   <img style="height:600px; border-width:5px" src="./images/usage-history.png"/>
 
-                  <!-- graph of users over time -->
 
-                  <!-- graph of formats over time -->
+                  <aside class="notes">
+                    A more quantitative look at the history...
+                    you can see in green the number of contributors over time -
+                    this is the number of people both in OME and from the community who authored at
+                    least one Git commit in a particular year.  To date in 2015, we have 21 contributors,
+                    which is the highest it's ever been.
+                    You can also see in red how the number of supported formats has increased, from 43
+                    in 2006 to 142 today.  We've also had a substantial increase in the number of people using
+                    Bio-Formats over the years - we currently estimate this to be around 60,000 (though estimating
+                    usage is a bit tricky).
+
+                    Any questions so far?
+                  </aside>
                 </section>
 
                 <section>
                   <h2>What can you do now?</h2>
+
+                  <aside class="notes">
+                    Now that we've covered the background - what can you actually do with Bio-Formats now?
+                  </aside>
                 </section>
 
                 <section>
@@ -152,11 +236,25 @@
                         <li>SPIM</li>
                       </ul>
                   </ul>
+
+                  <aside class="notes">
+                    As I've mentioned, reading images and metadata is the main function -
+                    early version of Bio-Formats targetted light microscopy specifically,
+                    but as new modalities evolved and more people started using Bio-Formats
+                    we've expanded to encompass medical imaging, electron microscopy,
+                    and the more complex domains of high content screening, digital pathology,
+                    whole slide imaging, FLIM, and SPIM.
+                  </aside>
                 </section>
 
                 <section>
                   <section>
                   <h2>...and in many different applications</h2>
+                  <aside class="notes">
+                  All of these domains still use the same API, which means that the code
+                  to retrieve an image and its timestamp looks the same no matter what format
+                  you're working with ...
+                  </aside>
                   </section>
                   <section>
 
@@ -172,7 +270,11 @@ for (int plane = 0; plane < reader.getImageCount(); plane++) {
   Number timestamp = omeMetadata.getPlaneDeltaT(0, plane).value();
 }
 
-                </code></pre></section>
+                </code></pre>
+                <aside class="notes">
+                  ...in Java
+                </aside>
+                </section>
                 <section>
                 <pre>ImageJ macro:<code>
 run("Bio-Formats Macro Extensions");
@@ -184,6 +286,9 @@ for (plane=0; plane < imageCount; plane++) {
   Ext.getPlaneTimingDeltaT(timestamps[plane], plane);
 }
                 </code></pre>
+                <aside class="notes">
+                  ...in an ImageJ macro
+                </aside>
                 </section>
 
                 <section>
@@ -195,7 +300,11 @@ for plane = 1:imageCount
   image = bfGetPlane(r, plane, varargin{:});
   timestamp = omeMetadata.getPlaneDeltaT(0, plane - 1).value().doubleValue();
 end
-                </code></pre></section>
+                </code></pre>
+                <aside class="notes">
+                  ...in MATLAB
+                </aside>
+                </section>
 
                 <section>
                 <pre>Python:<code>
@@ -205,7 +314,11 @@ omeMetadata = javabridge.JWrapper(reader.rdr.getMetadataStore())
 for plane in range(0, imageCount):
     image = reader.read(series=0, index=plane, rescale=False)
     timestamp = omeMetadata.getPlaneDeltaT(0, plane)
-                </code></pre></section>
+                </code></pre>
+                <aside class="notes">
+                  ...or using the python-bioformats extension developed by the CellProfiler team.
+                </aside>
+                </section>
                 </section>
 
                 <section>
@@ -217,6 +330,27 @@ for plane in range(0, imageCount):
                       <li>added units for most metadata values</li>
                       <li>lots of bug fixes!</li>
                     </ul>
+
+                    <aside class="notes">
+                      Over the last few releases this year, we've made several notable changes
+                      in the Java library.  We now have full support for Windows - so we are testing
+                      our entire repository of filesets on both Linux and Windows at least twice per week.
+                      Hand in hand with that, we've put a lot of time into improving performance
+                      over network filesystems specifically, both for our own benefit when
+                      testing, and in recognition of the fact that many people are now working with
+                      files on shared storage systems instead of on a local disk.
+
+                      We've also updated the OME-XML schema and the corresponding Bio-Formats API
+                      to allow the units for metadata values to be recorded instead of being pre-defined
+                      by the schema - for example, the physical size of a pixel was previously only stored
+                      in micrometers.  The same value can now be stored in whichever standard unit makes the
+                      most sense based upon the acquisition, such as angstroms for EM or centimeters for
+                      medical imaging.  We did this to provide maximum flexibility across all of the imaging
+                      domains previously mentioned.
+
+                      Finally, we have as always fixed a lot of bugs - many of which were reported by the
+                      community, including almost everyone here.  We're very grateful for this feedback.
+                    </aside>
                 </section>
 
                 <section>
@@ -227,7 +361,29 @@ for plane in range(0, imageCount):
                         <ul><li>More releases, and faster</li></ul>
                       <li>OME-HDF?</li>
                       <li>More usage examples and developer documentation</li>
+                      <li>Updated bug reporting and QA process</li>
                     </ul>
+
+                    <aside class="notes">
+                      Lastly, it's the time of year when we start planning what the next 12-18 months will look like.
+
+                      As I mentioned earlier, we intend to make some updates to the development process
+                      that has been in use since 2008, to allow for more frequent releases,
+                      while keeping the same high level of testing and QA that we have now.
+
+                      We're also considering whether to define a new format based upon HDF -
+                      some of yo uhave expressed interest in using an HDF format instead of OME-TIFF,
+                      and we'd like to accomodate that if possible.
+
+                      In recognition of the increasing number of developer users, we'ld like to
+                      put serious effort into expanding documentation and example code for
+                      developers, across all of the supported languages.
+
+                      We're also planning to make some updates to how we ask for bug reports.  Our goal is
+                      to make it easier to provide detailed information about what a problematic file should
+                      look like, be it in screenshots or a list of the expected metadata - with the hope of
+                      reducing the time to fix bugs while also being able to more accurately test for regressions going forward.
+                    </aside>
                 </section>
 
                 <section>
@@ -235,12 +391,25 @@ for plane in range(0, imageCount):
 
                   <ul>
                     <li>Introduction to working with the new C++ library</li>
+                    <li>OME-HDF discussion</li>
                     <li>Breakouts/technical discussion - look for the Bio-Formats sign!</li>
                   </ul>
+
+                  <aside class="notes">
+                    For the rest of the session, Roger Leigh will introduce working with the new
+                    Bio-Formats C++ library.  Later on today, we'll have a short discussion
+                    of OME-HDF requirements.
+                    For the remainder of the day, though, we'll be available to answer any questions
+                    you might have - just look for one of us, or for the Bio-Formats signs.
+                  </aside>
                 </section>
 
                 <section>
                   <h2>Questions?</h2>
+
+                  <aside class="notes">
+                    (even I don't need notes for this one!)
+                  </aside>
                 </section>
 
             </div>
