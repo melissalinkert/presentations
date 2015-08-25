@@ -123,6 +123,7 @@
                       <li>late 2012/early 2013 - work began on C++ library</li>
                       <li>2014/2015 - major effort to improve performance</li>
                       <li>2015 - increasing number of contributed code changes</li>
+                      <li>mid-2015 - faster release cycle</li>
                     </ul>
                 </section>
 
@@ -162,19 +163,6 @@
                   <section>
 
                   <!-- montage image of same code in ImageJ, MATLAB, Java, Python, ??? -->
-
-                  <pre>Java:<code>
-ImageReader reader = new ImageReader();
-IMetadata omeMetadata = MetadataTools.createOMEXMLMetadata();
-reader.setMetadataStore(omeMetadata);
-reader.setId("/PATH/TO/FILE");
-for (int plane = 0; plane < reader.getImageCount(); plane++) {
-  byte[] image = reader.openBytes(plane);
-  Number timestamp = omeMetadata.getPlaneDeltaT(0, plane).value();
-}
-
-                </code></pre></section>
-                <section>
                 <pre>ImageJ macro:<code>
 run("Bio-Formats Macro Extensions");
 Ext.setId("/PATH/TO/FILE");
@@ -187,7 +175,7 @@ for (plane=0; plane < imageCount; plane++) {
                 </code></pre>
                 </section>
 
-                <section>
+                 <section>
                 <pre>MATLAB:<code>
 r = bfGetReader("/PATH/TO/FILE");
 imageCount = r.getImageCount();
@@ -198,14 +186,17 @@ for plane = 1:imageCount
 end
                 </code></pre></section>
 
-                <section>
-                <pre>Python:<code>
-reader = bioformats.get_image_reader(None, path="/PATH/TO/FILE")
-imageCount = reader.rdr.getImageCount()
-omeMetadata = javabridge.JWrapper(reader.rdr.getMetadataStore())
-for plane in range(0, imageCount):
-    image = reader.read(series=0, index=plane, rescale=False)
-    timestamp = omeMetadata.getPlaneDeltaT(0, plane)
+                  <section>
+                  <pre>Java:<code>
+ImageReader reader = new ImageReader();
+IMetadata omeMetadata = MetadataTools.createOMEXMLMetadata();
+reader.setMetadataStore(omeMetadata);
+reader.setId("/PATH/TO/FILE");
+for (int plane = 0; plane < reader.getImageCount(); plane++) {
+  byte[] image = reader.openBytes(plane);
+  Number timestamp = omeMetadata.getPlaneDeltaT(0, plane).value();
+}
+
                 </code></pre></section>
                 </section>
 
@@ -226,8 +217,8 @@ for plane in range(0, imageCount):
                     <ul>
                       <li>Updates to the development process</li>
                         <ul><li>More releases, and faster</li></ul>
-                      <li>OME-HDF?</li>
                       <li>More usage examples and developer documentation</li>
+                      <li>Ideas welcome!</li>
                     </ul>
                 </section>
 
