@@ -101,26 +101,13 @@
                 <section>
                     <h2>Outline</h2>
                     <ul>
-                        <li>OMERO and Acquisition</li>
-                        <ul><li>Micromanager and OMERO</li></ul>
-                        <li>OMERO and Analysis</li>
+                        <li><b>OMERO and Analysis</b></li>
                         <ul><li>ImageJ and OMERO</ul></li>
-                        <li>OMERO and Intelligent Acquisition</li>
-                        <ul><li>Matlab, Micromanager and OMERO</ul></li>
+                        <li><b>OMERO and Acquisition</b></li>
+                        <ul><li>Micro-Manager and OMERO</li></ul>
+                        <li><b>OMERO and Intelligent Acquisition</b></li>
+                        <ul><li>Matlab, Micro-Manager and OMERO</ul></li>
                     </ul>
-                </section>
-
-                <section>
-                    <h2>OMERO and Acquisition</h2>
-                    <ul>
-                        <li>Requirements</li>
-                        <ul><li><a href="https://micro-manager.org/wiki/Download%20Micro-Manager_Latest%20Release">Micromanager (Open-Source Microscopy Software for Acquisition)</a></ul></li>
-                        <ul><li><a href="http://downloads.openmicroscopy.org/bio-formats/5.1.1/">Bioformats_Package.jar (Bio-Formats Java Library)</a></ul></li>
-                        <ul><li><a href="http://downloads.openmicroscopy.org/omero/5.1.1/">OMERO_IJ Plugin (Insight as ImageJ plugin)</a></ul></li>    
-                        <img src="images/OMEROAcquisition.png" width="80%"/>
-                    </ul>
-                    <aside class="notes">
-                    </aside>
                 </section>
 
                 <section>
@@ -128,7 +115,7 @@
                     <ul>
                         <li>Requirements</li>
                         <ul>
-                            <li><a href="http://imagej.nih.gov/">ImageJ</a></li>
+                            <li><a href="http://imagej.nih.gov/">ImageJ (Java image processing program)</a></li>
                             <li><a href="http://downloads.openmicroscopy.org/bio-formats/5.1.1/">Bioformats_Package.jar (Bio-Formats Java Library)</a></li>
                             <li><a href="http://downloads.openmicroscopy.org/omero/5.1.1/">OMERO_IJ Plugin (Insight as ImageJ plugin)</a></li>
                         </ul>
@@ -139,11 +126,25 @@
                 </section>
 
                 <section>
-                    <h2>OMERO and Intelligent Acquisition</h2>
+                    <h2>OMERO and Acquisition</h2>
                     <ul>
                         <li>Requirements</li>
-                        <ul><li><a href="https://micro-manager.org/wiki/Download%20Micro-Manager_Latest%20Release">Micromanager</a></ul></li> 
-                        <ul><li><a href="http://uk.mathworks.com/products/matlab/">Matlab</a></ul></li>                        
+                        <ul><li><a href="https://micro-manager.org/wiki/Download%20Micro-Manager_Latest%20Release">Micro-Manager (Open-Source Microscopy Software for Acquisition)</a></ul></li>
+                        <ul><li><a href="http://downloads.openmicroscopy.org/bio-formats/5.1.1/">Bioformats_Package.jar (Bio-Formats Java Library)</a></ul></li>
+                        <ul><li><a href="http://downloads.openmicroscopy.org/omero/5.1.1/">OMERO_IJ Plugin (Insight as ImageJ plugin)</a></ul></li>    
+                        <img src="images/OMEROAcquisition.png" width="80%"/>
+                    </ul>
+                    <aside class="notes">
+                    </aside>
+                </section>
+
+
+                <section>
+                    <h2>OMERO and Intelligent Acquisition</h2>                    
+                    <ul>
+                        <li>Requirements</li>
+                        <ul><li><a href="http://uk.mathworks.com/products/matlab/">Matlab</a></ul></li> 
+                        <ul><li><a href="https://micro-manager.org/wiki/Download%20Micro-Manager_Latest%20Release">Micromanager</a></ul></li>                                                
                         <ul><li><a href="http://downloads.openmicroscopy.org/omero/5.1.1/">OMERO Matlab Toolbox</a></ul></li>
                         <ul><li><a href="http://downloads.openmicroscopy.org/bio-formats/5.1.1/">Bioformats_Package.jar (Bio-Formats Java Library)</a></ul></li>
                         <ul><li><a href="https://github.com/openmicroscopy/openmicroscopy/tree/develop/lib/repository">ini4j.jar</a></ul></li>
@@ -154,7 +155,7 @@
                 <section>
                     <h2>Setup Matlab ClassPath</h2>
                     <ul>
-                        <li>Micromanager Configuration</li>
+                        <li>Micro-Manager Configuration</li>
 <pre><code contenteditable style="width:1050px; font-size:90%" class="bash">java.lang.System.clearProperty('java.util.prefs.PreferencesFactory')
 javaaddpath('/Applications/Micro-Manager1.4/ij.jar')
 javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/MMCoreJ.jar')
@@ -165,8 +166,7 @@ javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/swing-layout-1
 javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/ome-xml.jar')
 javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/loci-common.jar')
 javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/scifio.jar')
-javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/slf4j-api-1.7.1.jar')
-javaaddpath('/Applications/Micro-Manager1.4/plugins/bioformats_package.jar')</code></pre>
+javaaddpath('/Applications/Micro-Manager1.4/plugins/Micro-Manager/slf4j-api-1.7.1.jar')</code></pre>
                         <li>OMERO Matlab Toolbox Configuration</li>
 <pre><code contenteditable style="width:1050px; font-size:90%" class="bash">inputdir=['/Users/bramalingam/OME/matlab/OMERO.matlab-5.1.0-ice35-b40'];
 addpath(genpath(inputdir));
@@ -177,17 +177,18 @@ javaaddpath('/Users/bramalingam/OME/matlab/OMERO.matlab-5.1.0-ice35-b40/libs/bio
                 </section>
 
                 <section>
-                    <h2>Micro-Manager:load Config,Snap and Save Image</h2>
+                    <h2>Config,Snap and Save Image</h2>
                     <ul>
-                        <li>Micromanager : Load Microscope Configuration</li>
+                        <li>Micro-Manager : Load Microscope Configuration</li>
                         <pre><code contenteditable style="width:900px; font-size:90%" class="bash">import mmcorej.*;
 mmc = CMMCore;
 mmc.loadSystemConfiguration('/Applications/Micro-Manager1.4/MMConfig_demo.cfg');
 </code></pre>
-                        <li>Micromanager : Snap Image</li>
+                        <li>Micro-Manager : Snap Image</li>
                         <pre><code contenteditable style="width:900px; font-size:90%" class="bash">mmc.snapImage();
 img = mmc.getImage();
 </code></pre>
+<font size="5">********************|Custom Written Analysis Scripts|*************</font>
                         <li>Bio-Formats: save image</li>
                         <pre><code contenteditable style="width:900px; font-size:90%" class="bash">proc0 = ImageUtils.makeProcessor(mmc, img);
 imgp0 = ImagePlus('',proc0);
@@ -198,7 +199,7 @@ IJ.runPlugIn('loci.plugins.LociExporter', buffer.toString);</code></pre>
                 </section>
 
                 <section>
-                    <h2>Snap and Upload Image</h2>
+                    <h2>Upload Image and ...</h2>
                     <ul>
                         <li>OMERO: Create a Client and Session</li>
                         <pre style="text-align: left"><code contenteditable style="width:900px; font-size:90%" class="bash">client = loadOmero(host);
@@ -206,6 +207,29 @@ session = client.createSession(username, password);
 client.enableKeepAlive(60);</code></pre>
                         <li>OMERO: Upload_image.m</li>
                         <pre><code contenteditable style="width:900px; font-size:90%" class="bash">upload_image(path,session,username,password,ProjectName,DatasetName,host,importopt)</code></pre>
+                    </ul>
+                </section>
+
+                               <section>
+                    <h2>... add Metadata</h2>
+                    <ul>
+                        <li>Micro-Manager</li>
+                        <pre><code contenteditable style="width:900px; font-size:90%" class="bash">devices = mmc.getLoadedDevices();
+cvec =[];
+for i=0:devices.size-1
+    properties = mmc.getDevicePropertyNames(devices.get(i));
+    cvec = [cvec ; {char(devices.get(i))} {'#'}];
+    for j = 0:properties.size-1
+        s = properties.get(j);
+        v = mmc.getProperty(devices.get(i),s);
+        cvec = [cvec ;  {char(s)} {char(v)}];
+        imgp0.setProperty(char(s), char(v));
+    end
+end</pre></code>
+                        <li>OMERO: Key-Value pair Annotations</li>
+                        <pre><code contenteditable style="width:900px; font-size:90%" class="bash">map = writeMapAnnotation(session, cvec(:,1)',cvec(:,2)');
+link1 = linkAnnotation(session, map, 'image', imageId(1));
+session.getUpdateService().saveAndReturnObject(link1);</pre></code>
 
                     </ul>
                 </section>
@@ -220,12 +244,14 @@ client.enableKeepAlive(60);</code></pre>
                 <section>
                     <h2>Documentation</h2>
                     <ul>
-                        <li>Micromanager and Matlab</li>
+                        <li>Micro-Manager and Matlab</li>
                         <ul><li><a href="https://micro-manager.org/wiki/Matlab_Configuration">Using Micro-Manager from your Matlab environment</a></li></ul>
                         <li>OMERO and Matlab</li>
                         <ul><li><a href="http://www.openmicroscopy.org/site/support/omero5.1/developers/Matlab.html">OMERO MATLAB language bindings</a></li></ul>
                         <li>OMERO and ImageJ</li>
                         <ul><li><a href="http://help.openmicroscopy.org/imagej.html">Using ImageJ with OMERO 5.1</a></li></ul>
+                        <li>Matlab Scripts</li>
+                        <ul><li><a href="https://gist.github.com/bramalingam/1d36f827add8f5342068">Gist Page: Matlab scripts for Intelligent acquisition</a></li></ul>
                     </ul>
                 </section>
 
@@ -245,10 +271,6 @@ client.enableKeepAlive(60);</code></pre>
                 <section>
                     <h1>Questions ?</h1>
                 </section>
-
-
-
-
                 
             </div>
 

@@ -81,7 +81,8 @@
         <![endif]-->
     </head>
 
-    <!-- Notes: webclient demo - mention urls
+    <!-- Notes:
+
         Get webclient up and running
         With figure, gallery & webtest installed
         Terminal - get Robot test command ready
@@ -110,7 +111,7 @@
 
                 <!-- talk outline -->
                 <section>
-                    <h2>Apps for Extending OMERO.web</h2>
+                    <h2>Outline</h2>
                     <ul>
                         <li>What's new in OMERO.web?</li>
                         <li>The OMERO.web framework</li>
@@ -129,13 +130,13 @@
                     <h2>What's new in OMERO.web?</h2>
                     <ul>
                         <li>Search UI
-                            <a href="https://www.youtube.com/watch?v=47cDhPtLJRo">
+                            <a target="youtube" href="https://www.youtube.com/watch?v=47cDhPtLJRo">
                                 Demo on youtube
                             </a>
                         </li>
+                        <li>Map annotations</li>
                         <li>Preview panel</li>
                         <li>Image viewer</li>
-                        <li>Map annotations</li>
                         <li>Robot Framework Selenium tests</li>
                         <li>OMERO.figure 1.1</li>
                     </ul>
@@ -158,7 +159,7 @@ $ ./build.py -f components/tests/ui/build.xml web-chrome -DTEST=rdef_test.txt
                 <section>
                     <h2>Robot Framework<br>Selenium Tests</h2>
 
-                    <a href="https://ci.openmicroscopy.org/view/Failing/job/OMERO-5.1-merge-robotframework/lastBuild/robot/">Daily Test Results</a><br>
+                    <a target="robot" href="https://ci.openmicroscopy.org/view/Failing/job/OMERO-5.1-merge-robotframework/lastBuild/robot/">Daily Test Results</a><br>
                     <img style="height:300px" src="images/RobotResultsGraph.png"/>
                 </section>
 
@@ -186,21 +187,21 @@ $ ./build.py -f components/tests/ui/build.xml web-chrome -DTEST=rdef_test.txt
                     <h2>webgateway API</h2>
                     <ul>
                         <li>Json data: e.g. Image json
-                            <a href="https://nightshade.openmicroscopy.org/webgateway/imgData/3925541/"  target="_blank">
+                            <a href="http://jcb-dataviewer.rupress.org/jcb/imgData/631159/"  target="_blank">
                                 webgateway/imgData/&lt;imageId&gt;/
                             </a>
                         </li>
 
                         <div style="clear:both"></div>
                         <li>
-                            <a target="new" href="https://nightshade.openmicroscopy.org/webgateway/render_image/3925542/35/0/">
-                                <img style="float:right; margin-right:15px" src="https://nightshade.openmicroscopy.org/webgateway/render_image/3925542/35/0/" width='120' height='120'/>
+                            <a target="new" href="http://jcb-dataviewer.rupress.org/jcb/render_image/631159/6/0/">
+                                <img style="float:right; margin-right:15px" src="http://jcb-dataviewer.rupress.org/jcb/render_image/631159/6/0/" width='120' height='120'/>
                             </a>
-                            <a target="new" href="https://nightshade.openmicroscopy.org/webgateway/render_image/3925542/35/0/?c=1,2">
-                                <img style="float:right; margin-right:15px" src="https://nightshade.openmicroscopy.org/webgateway/render_image/3925542/35/0/?c=1,2" width='120' height='120'/>
+                            <a target="new" href="http://jcb-dataviewer.rupress.org/jcb/render_image/631159/6/0/?c=1,2">
+                                <img style="float:right; margin-right:15px" src="http://jcb-dataviewer.rupress.org/jcb/render_image/631159/6/0/?c=2" width='120' height='120'/>
                             </a>
                             Image rendering:
-                            <a href="https://nightshade.openmicroscopy.org/webgateway/render_image/3925542/35/0/"  target="_blank">
+                            <a href="http://jcb-dataviewer.rupress.org/jcb/render_image/631159/6/0/"  target="_blank">
                                 webgateway/render_image/&lt;imageId&gt;/&lt;z&gt;/&lt;t&gt;/
                             </a>
                         </li>
@@ -277,9 +278,12 @@ $ ./build.py -f components/tests/ui/build.xml web-chrome -DTEST=rdef_test.txt
                         </li>
                         <li>External sites:
                             <ul>
-                                <li><a href="http://odr.stowers.org/websimr/">Stowers ODR</a> |
-                                    <a href="http://smc.sysgro.org/babel/omero/HTscape/">Sysgro (pombe)</a> |
-                                    <a href="http://jcb-dataviewer.rupress.org/">JCB DataViewer</a>
+                                <li><a href="http://odr.stowers.org/websimr/" target="stowers">
+                                        Stowers ODR</a> |
+                                    <a href="http://smc.sysgro.org/babel/omero/HTscape/" target="sysgro">
+                                        Sysgro (pombe)</a> |
+                                    <a href="http://jcb-dataviewer.rupress.org/" target="jcb">
+                                        JCB DataViewer</a>
                                 </li>
                             </ul>
                         </li>

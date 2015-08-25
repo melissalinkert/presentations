@@ -47,14 +47,6 @@
           list-style: none;
       }
 
-      table.centre {
-          width: 100%;
-      }
-
-      .reveal .centre td {
-          text-align: center;
-      }
-
       .rot90 {
           -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
@@ -106,6 +98,11 @@
       .reveal q {
         quotes: inherit;
         font-style: normal;
+      }
+
+      .reveal table tr th,
+      .reveal table tr td {
+        text-align: right;
       }
     </style>
 
@@ -196,9 +193,17 @@
         <section>
           <h3>More on ManagedRepository and Filesets</h3>
           <ul>
-            <li>link to docs</li>
-            <li>2014 talk</li>
-            <li>2013 talk?</li>
+            <li>Documentation:</li>
+            <ul>
+              <li><a href="http://www.openmicroscopy.org/site/support/omero5.1/sysadmins/fs-upload-configuration.html">Managed repository</a></li>
+              <li><a href="https://www.openmicroscopy.org/site/support/omero5.1/developers/ImportFS.html">Import and Filesets</a></li>
+              <li><a href="http://www.openmicroscopy.org/site/support/omero5.1/sysadmins/in-place-import.html">In-place import</a></li>
+              <li><a href="http://www.openmicroscopy.org/site/support/omero5.1/sysadmins/import-scenarios.html">Import scenarios</a></li>
+            </ul>
+            <li>
+              <a href="http://downloads.openmicroscopy.org/presentations/2014/Paris-Workshops/OMERO-FS-Workshop/#/">Managing Imports with OMERO 5,
+Paris 2014</a>
+            </li>
           </ul>
           <aside class="notes">
           </aside>
@@ -335,11 +340,11 @@
           some.class.Name   # Use a class on the CLASSPATH.
 
         Server-side options:
-          ln                # Use hard-link.
-          ln_s              # Use soft-link.
-          ln_rm             # Caution! Hard-link followed by source deletion.
           cp                # Use local copy command.
           cp_rm             # Caution! Copy followed by source deletion.
+          ln                # Use hard-link.
+          ln_rm             # Caution! Hard-link followed by source deletion.
+          ln_s              # Use soft-link.
 
   e.g. $ bin/omero import -- --transfer=ln_s foo.tiff
        $ ./importer-cli --transfer=ln bar.tiff
@@ -351,10 +356,23 @@
         <section>
           <h2>Use cases</h2>
           <ul>
-            <li>Upload - data on separate system</li>
-            <li>Copy - data on same system, avoids network overheads</li>
-            <li>Hard link - very large data on OMERO server</li>
-            <li>Soft link - DropBox on OMERO server</li>
+            <li>Upload</li>
+            <ul>
+              <li>data on separate system</li>
+              <li>remote import</li>
+            </ul>
+            <li>Copy</li>
+            <ul>
+              <li>data on same system, lower network overhead</li>
+            </ul>
+            <li>Hard link</li>
+            <ul>
+              <li>very large data on OMERO server</li>
+            </ul>
+            <li>Soft link</li>
+            <ul>
+              <li>DropBox on OMERO server</li>
+            </ul>
           </ul>
           <aside class="notes">
           </aside>
@@ -375,6 +393,12 @@
           </section>
           <section data-transition="none">
             <h3>Import for: using Insight</h3>
+            <img src="diagrams/importas-yes2.png" width="100%"/>
+            <aside class="notes">
+            </aside>
+          </section>
+          <section data-transition="none">
+            <h3>Import for: using Insight</h3>
             <img src="diagrams/importas-no.png" width="100%"/>
             <aside class="notes">
             </aside>
@@ -383,11 +407,11 @@
             <h3>Import for: using the CLI</h3>
             <pre style="font-size:60%">
 
-  bin/omero login -u user-3 --sudo user-6
-  Password for user-6:
-  Created session f49d2...65250 (user-3@...). Current group: read-annotate-1
-  bin/omero import ~/Work/Images/dv/IAGFP-Noc01_R3D.dv
-  Using session f49d2...65250 (user-3@...). Current group: read-annotate-1
+  bin/omero login -u john --sudo jane
+  Password for jane:
+  Created session f49d2...65250 (john@...). Current group: skyelab
+  bin/omero import ~/Images/dv/IAGFP-Noc01_R3D.dv
+  Using session f49d2...65250 (john@...). Current group: skyelab
   ...
   ==> Summary
   2 files uploaded, 1 fileset created, 1 image imported,
@@ -419,7 +443,7 @@
                       ARG > 0 implies the number of minutes to wait.
                       ARG = 0 exits immediately.
                               Use a *_completed option to clean up.
-                      ARG < 0 waits indefinitely. This is the default.
+                      ARG &lt; 0 waits indefinitely. This is the default.
 
   --close_completed         Close completed imports.
 
@@ -474,55 +498,66 @@
 
         <section>
           <h3>A few numbers</h2>
-          <center>
-            <table style="font-size: 100%; border=2px; background: #FFFFFF" cellspacing="15" cellpadding="15">
-              <tr>
-                <th></th>
-                <th></th>
-                <th>default</th>
-                <th colspan=3 class="centre">symlink &amp; skip all</th>
-              </tr>
-              <tr>
-                <th>format</th>
-                <th>size</th>
-                <th>total</th>
-                <th>symlink</th>
-                <th>import</th>
-                <th>total</th>
-              </tr>
-              <tr>
-                <td>Zeiss CZI</td>
-                <td>200GB</td>
-                <td>4.5h</td>
-                <td>6s</td>
-                <td>3m</td>
-                <td>3m</td>
-              </tr>
-              <tr>
-                <td>SPIM</td>
-                <td>~2TB</td>
-                <td>days?</td>
-                <td>14m</td>
-                <td>16m</td>
-                <td>30m</td>
-              </tr>
-              <tr>
-                <td>SVS</td>
-                <td>90GB</td>
-                <td>---</td>
-                <td>7m</td>
-                <td>23m</td>
-                <td>30m</td>
-              </tr>
-            </table>
-          </center>
+          <br/>
+          <table class="reveal" style="font-family: monospace; font-size: 90%; background: #FFFFFF" cellspacing="15" cellpadding="10">
+            <tr style="font-weight: bold">
+              <th></th><th></th><th></th>
+              <th>default</th>
+              <th colspan="3"  style="text-align: center">symlink&nbsp;&amp;&nbsp;skip&nbsp;all</th>
+            </tr>
+            <tr style="font-weight: bold">
+              <th style="text-align: left">format</th>
+              <th>size</th>
+              <th>files</th>
+              <th>total</th>
+              <th>link</th>
+              <th>import</th>
+              <th>total</th>
+            </tr>
+            <tr>
+              <td style="text-align: left">Zeiss&nbsp;CZI</td>
+              <td>200GB</td>
+              <td>6</td>
+              <td>4.5h</td>
+              <td>6s</td>
+              <td>3m</td>
+              <td>3m</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">SPIM&nbsp;(OME-TIFF)</td>
+              <td>~2TB</td>
+              <td>~3600</td>
+              <td>~days!</td>
+              <td>14m</td>
+              <td>16m</td>
+              <td>30m</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">SVS</td>
+              <td>90GB</td>
+              <td>465</td>
+              <td>1.5h</td>
+              <td>7m</td>
+              <td>23m</td>
+              <td>30m</td>
+            </tr>
+          </table>
         </section>
 
         <section>
-          <section>
-            <h2>A few more improvements</h2>
-            <h3>Excluding duplicates</h3>
-              <pre style="font-size:60%">
+          <h2>A few more improvements</h2>
+          <ul>
+            <li>Excluding duplicates</li>
+            <li>Cleanse</li>
+            <li>bin/omero fs</li>
+          </ul>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>Excluding duplicates</h3>
+            <pre style="font-size:60%">
 
     --exclude=filename        Exclude files based on filename.
 
@@ -532,15 +567,57 @@
            # Second call skips
          $ bin/omero import foo.tiff
            # This call imports again
-              </pre>
-            <aside class="notes">
-            </aside>
-          </section>
+            </pre>
+          <aside class="notes">
+          </aside>
+        </section>
 
-          <section>
-            <h2>A few more improvements</h2>
-            <h3>Move a fileset</h3>
-            <pre style="font-size:60%">
+        <section>
+          <h3>Remove empty directories</h3>
+          <pre style="font-size:60%">
+
+  bin/omero admin cleanse --help
+  usage: omero admin cleanse [--dry-run] data_dir
+
+  Remove binary data files from OMERO
+
+  Deleting an object from OMERO currently may not remove all the binary data.
+  Use this command either manually or in a cron job periodically to remove
+  Pixels, empty directories, and other data.
+
+
+  Examples:
+    bin/omero admin cleanse --dry-run /OMERO  # Lists files to be deleted.
+    bin/omero admin cleanse /OMERO            # Actually delete them.
+          </pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+        <section>
+          <h3>bin/omero fs</h3>
+          <pre style="font-size:60%">
+
+  bin/omero fs --help
+  usage: omero fs &lt;subcommand&gt; ...
+
+  Filesystem utilities
+
+  &lt;subcommand&gt;
+    images      List images, filtering for archives, etc.
+    rename      Moves an existing fileset to a new location (admin-only)
+    repos       List all repositories.
+    sets        List filesets by various criteria
+    usage       Shows the disk usage for various objects.
+          </pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>Move a fileset</h3>
+          <pre style="font-size:60%">
 
   bin/omero fs rename --help
   usage: omero fs rename [--no-move] fileset
@@ -557,44 +634,67 @@
 
   Optional Arguments:
     --no-move           do not move original files and import log
-            </pre>
-            <aside class="notes">
-            </aside>
-          </section>
-          <section>
-            <h2>A few  more improvements</h2>
-            <h3>Remove empty directories</h3>
-            <pre style="font-size:60%">
+          </pre>
+          <aside class="notes">
+          </aside>
+        </section>
+        <section>
+          <h3>Report disk usage</h3>
+          <pre style="font-size:60%">
 
-  bin/omero admin cleanse --help
-  usage: omero admin cleanse [--dry-run] data_dir
+  bin/omero fs usage --help
+  usage: omero fs usage [obj [obj ...]]
 
-  Remove binary data files from OMERO
-
-  Deleting an object from OMERO currently may not remove all the binary data.
-  Use this command either manually or in a cron job periodically to remove
-  Pixels, empty directories, and other data.
-
+  Shows the disk usage for various objects.
 
   Examples:
-    bin/omero admin cleanse --dry-run /OMERO  # Lists files to be deleted.
-    bin/omero admin cleanse /OMERO            # Actually delete them.
-            </pre>
-            <aside class="notes">
-            </aside>
-          </section>
+
+      bin/omero fs usage             # total usage for current user
+      bin/omero fs usage --report    # more detailed usage for current user
+      bin/omero fs usage --groups    # total usage for current user's groups
+      # total usage for five images with minimal output
+      bin/omero fs usage Image:1,2,3,4,5 --size_only
+      # total usage for all images with in a human readable format
+      bin/omero fs usage Image:* --human-readable
+      # total usage for all users broken down by user and group
+      bin/omero fs usage Experimenter:* --report --sum-by user group
+          </pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>Report disk usage</h3>
+          <pre style="font-size:58%">
+
+  bin/omero fs usage Experimenter:6 --report --sum-by component --human-readable
+
+  Total disk usage: 1.7 TB bytes in 3823 files
+   component    |     size | files
+  --------------+----------+-------
+   Annotation   |  16.5 MB |    82
+   FilesetEntry |   1.7 TB |  3638
+   Job          | 396.0 KB |    14
+   OriginalFile |  80.8 KB |    58
+   Pixels       |  86.5 MB |    10
+   Thumbnail    |  34.0 KB |    21
+  (6 rows)
+          </pre>
+          <aside class="notes">
+          </aside>
+        </section>
         </section>
 
         <section>
           <h2>The future...</h2>
           <ul>
-            <li>import location</li>
+            <li>import location by path</li>
             <li>importer role</li>
-            <ul><li>advanced-importer role</li></ul>
             <li>extra performance</li>
-            <li>cron - later thumbnailing</li>
-            <li>these features in Insight</li>
-            <li>Web import</li>
+            <li>cron - later thumbnailing, etc.</li>
+            <li>new features presented in Insight</li>
+            <li>web import</li>
+            <li>re-import</li>
           </ul>
           <aside class="notes">
           </aside>
@@ -606,8 +706,12 @@
             <li>the "import team"</li>
             <li>the OME team</li>
             <li>the user community</li>
-            <li>our funders??</li>
           </ul>
+          <br/><br/>
+          <div style="background-color: #fff;">
+            <img src="diagrams/wellcome.png" height="140px">
+            <img src="diagrams/bbsrc.png" height="140px">
+          </div>
           <aside class="notes">
           </aside>
         </section>
