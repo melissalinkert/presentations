@@ -11,7 +11,7 @@ Year,Contributors,Formats,Users (thousands),Repository size (GB),Files (thousand
 2015,28,142,60,,,
 2016,24,,,,,
 2017,19,,,,,
-2018 (ytd),9,,, ,,
+2018,9,,,4096,,
 
 # contributors: https://github.com/openmicroscopy/bioformats/graphs/contributors?from=YYYY-01-01&to=YYYY-12-31&type=c
 # formats:
