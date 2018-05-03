@@ -23,7 +23,7 @@ plot.plot('Year', 'Users (thousands)', data=df, marker='o', color='gold')
 plot.plot('Year', 'Formats', data=df, marker='o', color='crimson')
 
 plot.figlegend(loc='upper center', ncol=3)
-plot.savefig('stats.png')
+plot.savefig('images/stats.png')
 
 # TODO:
 # - classic chart:
