@@ -6,12 +6,14 @@ import pandas
 df = pandas.read_csv('stats.csv')
 
 # classic users/formats/contribs chart
-plot.rc('axes', facecolor='whitesmoke')
-plot.rc('lines', linewidth=3, color='silver', markersize=10)
-plot.rc('savefig', facecolor='whitesmoke')
+bgcolor = 'whitesmoke'
+linecolor = 'silver'
+plot.rc('axes', facecolor=bgcolor)
+plot.rc('lines', linewidth=3, color=linecolor, markersize=10)
+plot.rc('savefig', facecolor=bgcolor)
 plot.grid()
 plot.tick_params('x', labelrotation=90)
-plot.tick_params('both', color='silver', labelcolor='#202020')
+plot.tick_params('both', color=linecolor, labelcolor='#202020')
 
 # contribs
 plot.plot('Year', 'Contributors', data=df, marker='o', color='royalblue')
