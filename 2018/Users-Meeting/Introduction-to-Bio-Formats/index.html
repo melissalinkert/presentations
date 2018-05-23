@@ -244,20 +244,21 @@ timestamp = .jcall(omeMetadata, "", "getPlaneDeltaT", 0, 0)
                     <section>
                         <h2>New minor releases</h2>
 
-                        <p>See the Bio-Formats <a href="https://www.openmicroscopy.org/site/support/bio-formats5.1/about/whats-new.html">version history</a></p>
+                        <p>See the Bio-Formats <a href="https://docs.openmicroscopy.org/bio-formats/5.8.2/about/whats-new.html">version history</a></p>
 
                         <ul>
-                          <li>Bio-Formats 5.6 - </li>
-                          <li>Bio-Formats 5.7 - </li>
-                          <li>Bio-Formats 5.8 - </li>
+                          <li>Bio-Formats 5.6 - codec and JAI component decoupling, new website</li>
+                          <li>Bio-Formats 5.7 - Imaris HDF fixes, API documentation enhancements</li>
+                          <li>Bio-Formats 5.8 - 2 new formats, TIFF tiling fixes, </li>
                         </ul>
                     </section>
                     
                     <section>
                       <h2>New file formats & codecs</h2>
                       <ul>
-                        <li>PerkinElmer Vectra QPTIFF (funded by a partnership between Glencoe Software and PerkinElmer)</li>
-                        <li>Ionpath MIBI (contributed by Rachel Finck)</li>
+                        <li>PerkinElmer Vectra QPTIFF</li>
+                          <ul><li>funded by a partnership between Glencoe Software and PerkinElmer</li></ul>
+                        <li>Ionpath MIBI (contributed by Rachel Finck of Ionpath)</li>
                       </ul>
                     </section>
                     
@@ -268,14 +269,15 @@ timestamp = .jcall(omeMetadata, "", "getPlaneDeltaT", 0, 0)
                       <li>consumed as artifacts from Maven Central</li>
                       <li>The following components have been decoupled:</li>
                       <ul>
-                        <li>ome-codecs</li>
-                        <li>ome-jai</li>
-                        <li>bio-formats-documentation</li>
+                        <li><a href="https://github.com/ome/ome-codecs">ome-codecs</a></li>
+                        <li><a href="https://github.com/ome/ome-jai">ome-jai</a></li>
+                        <li><a href="https://github.com/ome/bio-formats-documentation">bio-formats-documentation</a></li>
                       </ul>
                     </ul>
                   </section>
                 </section>
-                
+               
+                <!--
                 <section>  
                   <section>
                     <h2>Tiling</h2>
@@ -405,6 +407,7 @@ for (int series=0; series < reader.getSeriesCount(); series++) {
                     </code></pre>
                   </section>
                 </section>
+                -->
                     
                 <section>  
                   <section>
@@ -419,8 +422,8 @@ for (int series=0; series < reader.getSeriesCount(); series++) {
                   </section>
                   <section>
                       <h2>Currently Available Options</h2>
-                      <img src="./images/reader-options.png"/>
-                      <img src="./images/writer-options.png"/>
+                      <img src="./images/reader-options.png" width="1600"/>
+                      <img src="./images/writer-options.png" width="1600"/>
                   </section>
                   <section>
                     <h2>API Usage</h2>
@@ -461,10 +464,9 @@ bfconvert -option ometiff.companion outputFile.companion.ome inputFile.tiff outp
                         <h2>What's next?</h2>
 
                         <ul>
-                            <li>Tiling performance benchmarks</li>
-                            <li>Evaluating new binary containers</li>
-                            <li>Containing releases of Bio-Formats</li>
-                            <li>More user contributions</li>
+                            <li>New partnerships for new formats/features</li>
+                            <li>Continued research and development on emerging formats</li>
+                            <li>Continued component decoupling</li>
                             <li>What else would you like to see?</li>
                         </ul>
                     </section>
