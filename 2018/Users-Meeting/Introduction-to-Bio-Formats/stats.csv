@@ -11,10 +11,11 @@ Year,Contributors,Formats,Users (thousands),Repository size (GB),Files (thousand
 2015,28,142,60,,,,10
 2016,24,144,,,,,10
 2017,19,148,,,,,13
-2018,9,150,,4096,,,4
+2018,9,150,,4096,,6.963,4
 
 # contributors: https://github.com/openmicroscopy/bioformats/graphs/contributors?from=YYYY-01-01&to=YYYY-12-31&type=c
 # formats: count reported on http://docs.openmicroscopy.org/bio-formats/tag/supported-formats.html for last version in each year or
 #          https://github.com/openmicroscopy/bioformats/blob/tag/components/autogen/src/format-pages.txt for 2014 and prior
 # repository size: "du -h /ome/data_repo/curated"
 # releases (total): https://github.com/ome/bio-formats-documentation/blob/master/sphinx/about/whats-new.rst
+# files/datasets: test-stats using https://github.com/melissalinkert/bioformats/tree/fileset-stats
