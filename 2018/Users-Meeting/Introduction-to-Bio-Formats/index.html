@@ -224,18 +224,20 @@ timestamp = .jcall(omeMetadata, "", "getPlaneDeltaT", 0, 0)
                 </section>
 
                 <section>
+                  <img src="./images/stats.png"/>
+                </section>
+
+                <section>
                   <section>
                     <h2>What we've done in the past year</h2>
 
                     <ul>
-                      <li>released  4 new minor versions from 5.2 to 5.5</li>
-                      <li>new API additions for tiling</li>
-                      <li>new dynamic metadata options</li>
-                      <li>added support for 4 new file formats</li>
-                      <li>release of a new schema 2016-06</li>
+                      <li>released 3 new minor versions from 5.6 to 5.8</li>
+                      <li>added support for 2 new file formats</li>
+                      <li>re-architecture of components</li>
                       <li>bug fixes and reader improvements</li>
-                      <li>performance and test coverage improvements</li>
-                      <li>re architecture of components</li>
+                      <li>new file format research and development</li>
+                      <ul><li>workshop in room 1 at 14:30</li></ul>
                     </ul>
                   </section>
 
@@ -245,56 +247,30 @@ timestamp = .jcall(omeMetadata, "", "getPlaneDeltaT", 0, 0)
                         <p>See the Bio-Formats <a href="https://www.openmicroscopy.org/site/support/bio-formats5.1/about/whats-new.html">version history</a></p>
 
                         <ul>
-                          <li>Bio-Formats 5.2 - New schema release, 2 new file formats</li>
-                          <li>Bio-Formats 5.3 - Tiling API additions, dynamic metadata options, JPEG-XR support</li>
-                          <li>Bio-Formats 5.4 - command line options, performance improvements</li>
-                          <li>Bio-Formats 5.5 - Support for Olympus OIR and PerkinElmer Columbus</li>
+                          <li>Bio-Formats 5.6 - </li>
+                          <li>Bio-Formats 5.7 - </li>
+                          <li>Bio-Formats 5.8 - </li>
                         </ul>
                     </section>
                     
                     <section>
                       <h2>New file formats & codecs</h2>
                       <ul>
-                        <li>Olympus OIR (funded by a partnership between Glencoe Software and OLYMPUS EUROPA SE & Co. KG)</li>
-                        <li>PerkinElmer Columbus</li>
-                        <li>Becker & Hickl .spc</li>
-                        <li>Princeton Instruments .spe</li>
-                        <li>JPEG-XR compressed CZI data (funded by a partnership between Glencoe Software and ZEISS)</li>
+                        <li>PerkinElmer Vectra QPTIFF (funded by a partnership between Glencoe Software and PerkinElmer)</li>
+                        <li>Ionpath MIBI (contributed by Rachel Finck)</li>
                       </ul>
                     </section>
                     
-                    <section>
-                      <h2>New OME schema - 2016-06</h2>
-                      <p>See the Bio-Formats <a href="https://www.openmicroscopy.org/site/support/ome-model/schemas/">schema history</a></p>
-                      <ul>
-                        <li>introduced the concept of Folders</li>
-                        <li>ROI properties have been simplified</li>
-                        <li>extended enum metadata to better support units</li>
-                        <li>Shape, LightSource and Map are now complexTypes</li>
-                        <li>MapPairs has been dropped</li>
-                        <li>Various code generation improvements:</li>
-                        <ul>
-                          <li>BinData has been added to handle raw binary data</li>
-                          <li>simplify and standardize the generation process</li>
-                          <li>allow for genuine abstract model types</li>
-                          <li>enable C++ model implementation</li>
-                        </ul>
-                      </ul>
-                    </section>
-
                   <section>
                     <h2>Architecture Changes</h2>
                     <ul>
-                      <li>decoupled components to new GitHub repositories.</li>
-                      <li>consumed as artifacts from Maven Central.</li>
+                      <li>decoupled components to new GitHub repositories</li>
+                      <li>consumed as artifacts from Maven Central</li>
                       <li>The following components have been decoupled:</li>
                       <ul>
-                        <li>formats-common - now ome-common-java</li>
-                        <li>ome-poi</li>
-                        <li>specification, xsd-fu and ome-xml components - now ome-model</li>
-                        <li>mdbtools - now ome-mdbtools</li>
-                        <li>stubs components - now ome-stubs</li>
-                        <li>metakit component - now ome-metakit</li>
+                        <li>ome-codecs</li>
+                        <li>ome-jai</li>
+                        <li>bio-formats-documentation</li>
                       </ul>
                     </ul>
                   </section>
@@ -433,7 +409,7 @@ for (int series=0; series < reader.getSeriesCount(); series++) {
                 <section>  
                   <section>
                     <h2>Metadata Options</h2>
-                    <p>See full list of <a href="http://www.openmicroscopy.org/site/support/bio-formats5.4/formats/options.html">Reader and Writer options</a></p>
+                    <p>See full list of <a href="https://docs.openmicroscopy.org/bio-formats/5.8.2/formats/options.html">Reader and Writer options</a></p>
                     <ul>
                       <li>new API supporting arbitrary key/value pairs</li>
                       <li>DynamicMetadataOptions class used to set options</li>
@@ -442,11 +418,9 @@ for (int series=0; series < reader.getSeriesCount(); series++) {
                     </ul>
                   </section>
                   <section>
-                      <h2>Current Available Options</h2>
-                      <h4>Reader Options</h4>
-                      <img width="100%" height="100%" src="images/ReaderOptions.png"/>
-                      <h4>Writer Options</h4>
-                      <img width="100%" height="100%" src="images/WriterOptions.png"/>
+                      <h2>Currently Available Options</h2>
+                      <img src="./images/reader-options.png"/>
+                      <img src="./images/writer-options.png"/>
                   </section>
                   <section>
                     <h2>API Usage</h2>
@@ -477,7 +451,7 @@ showinf -option nativend2.chunkmap true inputFile.nd2
                       <li>Writer options can be used with bfconvert -option</li>
                     </ul>
                     <pre>bfconvert example<code>
-bfconvert -option ometiff.companionoutputFile.companion.ome inputFile.tiff outputFile.ome.tiff
+bfconvert -option ometiff.companion outputFile.companion.ome inputFile.tiff outputFile.ome.tiff
                     </code></pre>
                   </section>
                 </section>
