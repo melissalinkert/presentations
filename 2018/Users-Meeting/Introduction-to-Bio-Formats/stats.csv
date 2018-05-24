@@ -12,7 +12,6 @@ Year,Contributors,Formats,Users (thousands),Repository size (GB),Files (thousand
 2016,24,144,NaN,,,,10
 2017,19,148,NaN,,,,13
 2018,9,150,NaN,4096,,6.963,4
-
 # contributors: https://github.com/openmicroscopy/bioformats/graphs/contributors?from=YYYY-01-01&to=YYYY-12-31&type=c
 # formats: count reported on http://docs.openmicroscopy.org/bio-formats/tag/supported-formats.html for last version in each year or
 #          https://github.com/openmicroscopy/bioformats/blob/tag/components/autogen/src/format-pages.txt for 2014 and prior
