@@ -14,7 +14,8 @@ def setup_plot():
 
 # load from the csv
 
-df = pandas.read_csv('stats.csv')
+df = pandas.read_csv('stats.csv', comment='#')
+df = df.interpolate(limit_area='inside', limit_direction='backward')
 
 # classic users/formats/contribs chart
 
@@ -23,7 +24,7 @@ setup_plot()
 # contribs
 plot.plot('Year', 'Contributors', data=df, marker='o', color='royalblue')
 
-# users
+# users - expected to be sparse
 plot.plot('Year', 'Users (thousands)', data=df, marker='D', color='gold')
 
 # formats
@@ -41,6 +42,6 @@ plot.figlegend(loc='upper center')
 plot.savefig('images/releases.png')
 
 # TODO:
-# - classic chart:
-#   * make plots continuous
+# - show every year on X axes
+
 

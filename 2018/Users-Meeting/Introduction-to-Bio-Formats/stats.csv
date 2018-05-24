@@ -1,17 +1,17 @@
 Year,Contributors,Formats,Users (thousands),Repository size (GB),Files (thousands),Datasets (thousands),Releases
-2006,4,43,,,,,10
-2007,4,52,,,,,19
-2008,4,59,,,,,7
-2009,8,73,,,,,3
+2006,4,43,0.1,,,,10
+2007,4,52,NaN,,,,19
+2008,4,59,NaN,,,,7
+2009,8,73,NaN,,,,3
 2010,6,104,22,,,,3
 2011,9,122,32,,,,4
-2012,16,127,,,,,5
+2012,16,127,NaN,,,,5
 2013,15,135,50,,,,6
-2014,21,136,,,,,8
+2014,21,136,NaN,,,,8
 2015,28,142,60,,,,10
-2016,24,144,,,,,10
-2017,19,148,,,,,13
-2018,9,150,,4096,,6.963,4
+2016,24,144,NaN,,,,10
+2017,19,148,NaN,,,,13
+2018,9,150,NaN,4096,,6.963,4
 
 # contributors: https://github.com/openmicroscopy/bioformats/graphs/contributors?from=YYYY-01-01&to=YYYY-12-31&type=c
 # formats: count reported on http://docs.openmicroscopy.org/bio-formats/tag/supported-formats.html for last version in each year or
