@@ -19,10 +19,10 @@ plot.tick_params('both', color=linecolor, labelcolor='#202020')
 plot.plot('Year', 'Contributors', data=df, marker='o', color='royalblue')
 
 # users
-plot.plot('Year', 'Users (thousands)', data=df, marker='o', color='gold')
+plot.plot('Year', 'Users (thousands)', data=df, marker='D', color='gold')
 
 # formats
-plot.plot('Year', 'Formats', data=df, marker='o', color='crimson')
+plot.plot('Year', 'Formats', data=df, marker='*', color='crimson')
 
 plot.figlegend(loc='upper center', ncol=3)
 plot.savefig('images/stats.png')
@@ -30,5 +30,3 @@ plot.savefig('images/stats.png')
 # TODO:
 # - classic chart:
 #   * make plots continuous
-#   * fill in remainder of .csv
-#   * use different markers for each plot (in case colors aren't distinguishable)
